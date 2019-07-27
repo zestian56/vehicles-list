@@ -1,5 +1,5 @@
 {
-  "name": "cafeto-carlist-nodejs",
+  "name": "cafeto-vehicles-nodejs",
   "version": "1.0.0",
   "description": "Car list project backend",
   "main": "src/index.js",

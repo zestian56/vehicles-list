@@ -1,6 +1,6 @@
-# Car List Admin
+# Vehicles List Admin
 
-Car list project made with Nodejs for the backend and React for the frontend.
+Vehicles list project made with Nodejs for the backend and React for the frontend.
 Both projects are on their folder.
 
 ## Features

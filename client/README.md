@@ -1,4 +1,4 @@
-# React Car List
+# React Vehicles List
 
 ## Features
 - Responsive Vehicles list

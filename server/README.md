@@ -1,4 +1,4 @@
-# Cafeto nodejs server for fullstack application
+# Nodejs Server
 
 ## Features
 - Full Vehicles CRUD endpoints
