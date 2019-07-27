@@ -1,0 +1,58 @@
+@import "../../assets/styles/mixins";
+
+.vehicle-item {
+  &-root {
+    padding: 1rem 1rem;
+    width: 100%;
+    background: white;
+    border-radius: 5px;
+    .display-flex(row);
+    .normal-border;
+    align-items: center;
+    margin: 5px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0), 0 1px 2px rgba(0, 0, 0, 0);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 1px 5px rgba(0, 0, 0, 0.22);
+    }
+  }
+
+  &s-container {
+    .display-flex(row);
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 1.5rem;
+    flex-grow: 1;
+  }
+  &-info {
+    padding: 0 5px;
+    flex-basis: 16.66%;
+    text-transform: capitalize;
+    .display-flex(row);
+    justify-content: center;
+    .media-lt-phone({flex-basis: 100%; justify-content: flex-start;});
+  }
+  &-owner {
+    justify-content: flex-start;
+  }
+}
+
+.plate-item {
+  border: 1px solid @grayDark;
+  border-radius: 5px;
+  color: black;
+  font-weight: 600;
+  margin-right: 1rem;
+  padding: 7px;
+  text-align: center;
+  width: 70px;
+  background: @background;
+  background: linear-gradient(
+    176deg,
+    #e8e8e8  0%,
+    rgb(255, 255, 255) 50%,
+    #e8e8e8  100%
+  );
+}

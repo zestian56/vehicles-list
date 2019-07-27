@@ -1,0 +1,65 @@
+@import "./colors";
+@import "./breakpoints";
+
+.display-flex(@direction) {
+  display: flex;
+  flex-direction: @direction;
+}
+
+.normal-border {
+  border: 1px solid @grayLight;
+}
+
+.media-phone(@rules) {
+  @media screen and (max-width: @screen-phone) {
+    @rules();
+  }
+}
+
+.media-tablet(@rules) {
+  @media screen and (min-width: (@screen-phone + 1px)) and (max-width: (@screen-desktop - 1px)) {
+    @rules();
+  }
+}
+
+.media-desktop(@rules) {
+  @media screen and (min-width: @screen-desktop) {
+    @rules();
+  }
+}
+
+.media-custom-max(@width, @rules) {
+  @media screen and (max-width: @width) {
+    @rules();
+  }
+}
+
+.media-custom-min(@width, @rules) {
+  @media screen and (min-width: @width) {
+    @rules();
+  }
+}
+
+.media-gt-phone(@rules) {
+  @media (min-width: (@screen-phone + 1px)) {
+    @rules();
+  }
+}
+
+.media-gt-tablet(@rules) {
+  @media (min-width: (@screen-tablet + 1px)) {
+    @rules();
+  }
+}
+
+.media-lt-phone(@rules) {
+  @media (max-width: (@screen-phone - 1px)) {
+    @rules();
+  }
+}
+
+.media-lt-tablet(@rules) {
+  @media (max-width: (@screen-tablet - 1px)) {
+    @rules();
+  }
+}

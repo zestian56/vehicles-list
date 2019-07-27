@@ -1,0 +1,43 @@
+{
+  "vehicles": [
+    {
+      "plate": "ABC123",
+      "owner": "Sebastian Botero",
+      "model": "A6",
+      "brand": "Audi",
+      "color": "blue",
+      "type": "car"
+    },
+    {
+      "plate": "CBA312",
+      "owner": "Ana Pinto",
+      "model": "Logan",
+      "brand": "Renault",
+      "color": "gray",
+      "type": "car"
+    }, {
+      "plate": "PAC020",
+      "owner": "Mateo Tafurt",
+      "model": "Aveo",
+      "brand": "Chevrolet",
+      "color": "gray",
+      "type": "car"
+    }
+    , {
+      "plate": "FUN250",
+      "owner": "Alejandro Quiñonez",
+      "model": "FMX",
+      "brand": "Volvo",
+      "color": "white",
+      "type": "truck"
+    },
+    {
+      "plate": "AYY170",
+      "owner": "Miguel Saavedra",
+      "model": "Ozark",
+      "brand": "Suzuki",
+      "color": "blue",
+      "type": "bike"
+    }
+  ]
+}

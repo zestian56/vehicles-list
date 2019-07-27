@@ -1,0 +1,24 @@
+@import "../../assets/styles/mixins";
+
+.filters {
+  &-root {
+    width: 100%;
+    .display-flex(row);
+    flex-wrap: wrap;
+    align-items: stretch;
+    .media-lt-tablet({justify-content: space-between;});
+    .search-input {
+      flex: 1 1 700px;
+      .media-lt-tablet({flex-basis: 100%;});
+    }
+
+    .button-group {
+      margin-left: 1rem;
+      .media-lt-tablet({margin: 1rem 0;});
+
+      button {
+        height: 100%;
+      }
+    }
+  }
+}

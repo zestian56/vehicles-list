@@ -1,6 +1,17 @@
 # Car List Admin
 
-## Requirements 
+Car list project made with Nodejs for the backend and React for the frontend.
+Both projects are on their folder.
 
-* Node 8.9.4+.
-* npm or yarn package manager
+## Features
+
+- Responsive Vehicles list
+- Vehicles Crud functionality
+- Search and filter options
+- Full Vehicles CRUD endpoints
+- Database Persistence
+
+## Requirements
+
+- [node](https://nodejs.org/en/)
+- [yarn](https://yarnpkg.com/en/)
