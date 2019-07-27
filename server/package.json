@@ -1,5 +1,5 @@
 {
-  "name": "cafeto-vehicles-nodejs",
+  "name": "cafeto-carlist-nodejs",
   "version": "1.0.0",
   "description": "Car list project backend",
   "main": "src/index.js",
@@ -9,7 +9,7 @@
     "build": "npm run clean && babel src --out-dir ./dist --source-maps",
     "serve": "npm run build && node ./dist/index.js",
     "clean": "rm -rf dist && mkdir dist",
-    "test": "./node_modules/.bin/mocha --require @babel/register"
+    "test": "./node_modules/.bin/mocha --require @babel/register 'src/**/**spec.js'"
   },
   "author": "Zestian",
   "license": "ISC",
@@ -21,6 +21,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",

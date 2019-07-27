@@ -5,7 +5,11 @@ import bodyParser from "body-parser";
 import handleErrors from "../utils/errors";
 
 const startServer = ({ port, host }, models) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve,reject) => {
+    if (!port) {
+      reject(new Error('The server must be started with an available port'))
+    }
+
     const app = express();
     app.use(cors());
     app.use(bodyParser.urlencoded({ extended: true }));
