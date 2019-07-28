@@ -1,39 +1,129 @@
-import { calendarActions, calendarReducer } from ".";
-import calendarActionTypes from "./actions.types";
+import { vehiclesActions, vehiclesReducer } from ".";
+import vehiclesActionTypes from "./actions.types";
 
-const mockMath = Object.create(global.Math);
-mockMath.random = () => 0.5;
-global.Math = mockMath;
-
-const reminderToTest = {
-    city: 1000,
-    text: "Reunión 2:30 en casa de Antonia",
-    date: "10-10-2019",
-    hour: "02:30:00",
-    color: "red"
+const vehicleToTest = {
+  plate: "ABC123",
+  owner: "Sebastian Botero",
+  model: "A6",
+  brand: "Audi",
+  color: "blue",
+  type: "car"
 };
 
-describe("actions", () => {
-    it("should create an action to add a reminder", () => {
-        const expectedAction = {
-            type: calendarActionTypes.ADD_REMINDER,
-            reminder: reminderToTest
-        };
-        expect(calendarActions.addReminder(reminderToTest)).toEqual(expectedAction);
-    });
+const vehiclesListToTest = [
+  vehicleToTest,
+  {
+    plate: "CBA312",
+    owner: "Ana Pinto",
+    model: "Logan",
+    brand: "Renault",
+    color: "gray",
+    type: "car"
+  }
+];
+
+describe("Vehicles Actions", () => {
+  it("should create an action to start adding a vehicle", () => {
+    const expectedAction = {
+      type: vehiclesActionTypes.ADD_VEHICLE_START,
+      vehicle: vehicleToTest
+    };
+    expect(vehiclesActions.addVehicleStart(vehicleToTest)).toEqual(
+      expectedAction
+    );
+  });
+
+  it("should create an action for failing to fetch", () => {
+    const expectedAction = {
+      type: vehiclesActionTypes.GET_ALL_VEHICLES_FAILURE,
+      errorMessage: "Error fetching"
+    };
+    expect(vehiclesActions.getAllVehiclesFailure("Error fetching")).toEqual(
+      expectedAction
+    );
+  });
+
+  it("should create an action for success of fetching vehicles", () => {
+    const expectedAction = {
+      type: vehiclesActionTypes.GET_ALL_VEHICLES_SUCCESS,
+      vehicles: vehiclesListToTest
+    };
+    expect(vehiclesActions.getAllVehiclesSuccess(vehiclesListToTest)).toEqual(
+      expectedAction
+    );
+  });
+
+  it("should create an action to start fetching vehicles", () => {
+    const filters = {
+      page: 1,
+      limit: 2,
+      type: "car",
+      searchText: "test"
+    };
+    const expectedAction = {
+      type: vehiclesActionTypes.GET_ALL_VEHICLES_START,
+      filters
+    };
+    expect(vehiclesActions.getAllVehiclesStart(filters)).toEqual(
+      expectedAction
+    );
+  });
 });
 
-describe("calendar reducer", () => {
-    it("should add Reminder with date, city, hour, text and color", () => {
-        expect(
-            calendarReducer({
-                reminders: []
-            }, {
-                type: calendarActionTypes.ADD_REMINDER,
-                reminder: reminderToTest
-            })
-        ).toEqual({
-            reminders: [{...reminderToTest, id: Math.random() * 10000 }]
-        });
+describe("Vehicles reducer", () => {
+  it("should add a Vehicle with plate, owner, model, brand, color and type", () => {
+    expect(
+      vehiclesReducer(
+        {
+          data: vehiclesListToTest
+        },
+        {
+          type: vehiclesActionTypes.ADD_VEHICLE_SUCCESS,
+          vehicle: vehicleToTest
+        }
+      )
+    ).toMatchObject({
+      data: [...vehiclesListToTest, vehicleToTest]
     });
+  });
+  it("should update a vehicle", () => {
+    const vehicleToUpdate = {
+      ...vehicleToTest,
+      owner: "paco"
+    };
+    expect(
+      vehiclesReducer(
+        {
+          data: vehiclesListToTest
+        },
+        {
+          type: vehiclesActionTypes.UPDATE_VEHICLE_SUCCESS,
+          vehicle: vehicleToUpdate
+        }
+      )
+    ).toMatchObject({
+      data: [...vehiclesListToTest].map(vh => {
+        if (vh.plate === vehicleToUpdate.plate) {
+          return vehicleToUpdate;
+        }
+        return vh;
+      })
+    });
+  });
+  it("should delete a vehicle", () => {
+    const plateToTest = "ABC123";
+    expect(
+      vehiclesReducer(
+        {
+          data: vehiclesListToTest
+        },
+        {
+          type: vehiclesActionTypes.DELETE_VEHICLE_SUCCESS,
+          plate: plateToTest
+        }
+      )
+    ).toMatchObject({
+      data: [...vehiclesListToTest].filter(vh => vh.plate !== plateToTest)
+    });
+  });
 });
