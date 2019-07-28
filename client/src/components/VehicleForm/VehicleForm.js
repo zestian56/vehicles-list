@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { Form, Input, Button, Select, Divider } from "antd";
@@ -47,8 +47,12 @@ function VehicleForm(props) {
     onCancelClick,
     onDeleteClick,
     onSubmit,
-    form: { getFieldDecorator, validateFieldsAndScroll }
+    form: { getFieldDecorator, validateFieldsAndScroll, resetFields }
   } = props;
+
+  useEffect(() => {
+    resetFields();
+  }, [resetFields, vehicle]);
 
   function handleSubmit(e) {
     e.preventDefault();
