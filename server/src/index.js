@@ -12,7 +12,7 @@ process.on("uncaughtRejection", (err, promise) => {
 const main = async () => {
   await startServer(serverSettings, models);
   console.log(
-    `Servidor escuchando en ${serverSettings.host}:${serverSettings.port}`
+    `Server running in ${serverSettings.host}:${serverSettings.port}`
   );
 };
 
